@@ -5,6 +5,8 @@ $fontfamily_Primary: "Oswald", sans-serif;
 $fontfamily_Secondary: "Pattaya", sans-serif;
 
 $color_darkBlue: #023c86;
+$color_Right: #3fa33f;
+$color_Wrong: #e33535;
 
 .App {
     text-align: center;
@@ -46,11 +48,22 @@ $color_darkBlue: #023c86;
 }
 
 .game_Holder {
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
+
+    &.game_Level1 {
+        background-image: url("./background1.png");
+    }
+    &.game_Level2 {
+        background-image: url("./background2.png");
+    }
+    &.game_Level3 {
+        background-image: url("./background3.jpg");
+    }
 
     .game_Header {
         border: 1px solid green;
@@ -91,23 +104,73 @@ $color_darkBlue: #023c86;
 
     .game_Srichka {
         font-family: $fontfamily_Primary;
-        font-size: 5rem;
+        font-size: 7rem;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.8);
+        margin: 40px;
+        border-radius: 30px;
+        border-radius: 10vw;
+        text-transform: uppercase;
+        padding: 15vw;
+        height: 100%;
+        box-shadow: 0px 0px 50px white;
+    }
+    .game_ButtonsHolder {
+        display: flex;
     }
     .game_Right {
-        background: green;
-        color: white;
-        border: 0;
-        font-size: 2rem;
-        padding: 20px;
         outline: 0;
+        border: 0;
+        font-family: $fontfamily_Primary;
+        font-size: 2rem;
+        background-color: $color_Right;
+        color: white;
+        margin: 0 auto;
+        border-radius: 20px;
+        padding: 20px 40px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0px 0px 50px rgb(0, 0, 0);
+        border: 3px solid lighten($color_Right, 20%);
+        &:hover {
+            background-color: lighten($color_Right, 20%);
+        }
+
+        // background: rgb(150, 235, 150);
+        // background: linear-gradient(
+        //     180deg,
+        //     rgba(150, 235, 150, 1) 0%,
+        //     rgba(171, 251, 171, 1) 17%,
+        //     rgba(10, 174, 10, 1) 100%
+        // );
+        // text-shadow: 0px 0px 20px darken($color_Right, 50%);
     }
     .game_Wrong {
-        background: red;
-        color: white;
-        border: 0;
-        font-size: 2rem;
-        padding: 20px;
         outline: 0;
+        border: 0;
+        font-family: $fontfamily_Primary;
+        font-size: 2rem;
+        background-color: $color_Wrong;
+        color: white;
+        margin: 0 auto;
+        border-radius: 20px;
+        padding: 20px 40px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0px 0px 50px rgb(0, 0, 0);
+        border: 3px solid lighten($color_Wrong, 20%);
+        &:hover {
+            background-color: lighten($color_Wrong, 20%);
+        }
+
+        // background: rgb(244, 136, 136);
+        // background: linear-gradient(
+        //     180deg,
+        //     rgba(244, 136, 136, 1) 0%,
+        //     rgba(255, 195, 195, 1) 17%,
+        //     rgba(227, 53, 53, 1) 100%
+        // );
+        // text-shadow: 0px 0px 20px darken($color_Wrong, 50%);
     }
     .game_Button {
         background: #fafafa;
@@ -116,5 +179,40 @@ $color_darkBlue: #023c86;
         font-size: 2rem;
         padding: 20px;
         outline: 0;
+    }
+    .game_Intro {
+        background: white;
+        position: fixed;
+        top: 50vh;
+        left: 50vw;
+        transform: translateY(-50%) translateX(-50%);
+        width: 80vw;
+        left: 50vw;
+        border-radius: 10vw;
+        box-shadow: 0px 0px 150px rgba(0, 0, 0, 0.9);
+        z-index: 2;
+
+        h1 {
+            font-family: $fontfamily_Secondary;
+            font-size: 4rem;
+            color: $color_darkBlue;
+        }
+
+        p {
+            font-family: $fontfamily_Primary;
+            font-size: 1.2rem;
+            margin: 30px;
+        }
+        button {
+            border: 0;
+            font-family: $fontfamily_Primary;
+            font-size: 2rem;
+            background-color: $color_darkBlue;
+            color: white;
+            margin: 50px;
+            border-radius: 20px;
+            padding: 20px 40px;
+            border: 3px solid lighten($color_darkBlue, 20%);
+        }
     }
 }

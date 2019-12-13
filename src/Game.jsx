@@ -69,7 +69,8 @@ class Game extends Component {
                         uniqueConsonants: true
                     }
                 }
-            }
+            },
+            hideIntro: false
         };
     }
 
@@ -81,11 +82,13 @@ class Game extends Component {
     };
 
     clickOnIntro = e => {
+        this.setState({ hideIntro: true });
         this.background_music.play();
     };
     reset = () => {
         console.log("reset");
-        this.setState({ currentLevel: 1, score: 0 });
+        this.setState({ currentLevel: 1, score: 0, hideIntro: false });
+
         this.calculateSrichka();
 
         // sound
@@ -193,27 +196,41 @@ class Game extends Component {
 
     render() {
         console.info("Game state", this.state);
+        const gameClass = `game_Holder game_Level${this.state.currentLevel}`;
         return (
-            <div className="game_Holder">
+            <div className={gameClass}>
                 <Header
                     score={this.state.score}
                     handleReset={this.reset}
                     level={this.state.currentLevel}
                 />
                 <div className="game_Srichka">{this.state.srichka}</div>
-                <button className="game_Right" onClick={this.answerCorrect}>
-                    ВЯРНО
-                </button>
-                <button className="game_Wrong" onClick={this.answerWrong}>
-                    ГРЕШНО
-                </button>
+                <div className="game_ButtonsHolder">
+                    <button className="game_Right" onClick={this.answerCorrect}>
+                        ВЯРНО
+                    </button>
+                    <button className="game_Wrong" onClick={this.answerWrong}>
+                        ГРЕШНО
+                    </button>
+                </div>
 
                 <button className="game_Button" onClick={this.nextLevel}>
                     NEXT LEVEL
                 </button>
-                <div className="game_Intro">
-                    <button onClick={this.clickOnIntro}>GAME INTRO</button>
-                </div>
+                {!this.state.hideIntro ? (
+                    <div className="game_Intro">
+                        <h1>Сричка</h1>
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit. Vel eveniet amet repellat fugiat rem officiis
+                            maiores, debitis sint sed dolorum blanditiis
+                            accusantium recusandae esse quos voluptates minima
+                            voluptatem, obcaecati voluptas.
+                        </p>
+                        <button onClick={this.clickOnIntro}>СТАРТ</button>
+                    </div>
+                ) : null}
+
                 <audio className="audio-element" loop>
                     <source src={background_looping} type="audio/mpeg"></source>
                 </audio>
