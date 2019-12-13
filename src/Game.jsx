@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./Header";
 import background_looping from "./background_looping.mp3";
 import button_right_sound from "./right_answer.mp3";
+import button_wrong_sound from "./wrong_answer.mp3";
 import nextlevel_sound from "./next_level.mp3";
 import menu_sound from "./menu.mp3";
 
@@ -177,6 +178,9 @@ class Game extends Component {
         const dec = this.state.levels[this.state.currentLevel].decrease;
         this.setState({ score: this.state.score - dec });
         this.calculateSrichka();
+
+        // sound
+        this.button_wrong_sound.play();
     };
 
     nextLevel = () => {
@@ -220,6 +224,13 @@ class Game extends Component {
                     }}
                 >
                     <source src={button_right_sound} type="audio/mpeg" />
+                </audio>
+                <audio
+                    ref={button_wrong_sound_ref => {
+                        this.button_wrong_sound = button_wrong_sound_ref;
+                    }}
+                >
+                    <source src={button_wrong_sound} type="audio/mpeg" />
                 </audio>
                 <audio
                     ref={nextlevel_sound_ref => {
