@@ -5,11 +5,12 @@ const Header = props => {
     console.info("Header props", props);
     return (
         <div className="game_Header">
-            <div className="game_Control">
-                <i class="fa fa-refresh"></i>
+            <div className="game_Control" onClick={props.handleReset}>
+                <i className="fa fa-refresh"></i>
             </div>
             <div>
                 <img src={logo} className="game_Logo" alt="logo" />
+                <h2>{props.level}</h2>
             </div>
             <div className="game_Score">{props.score}</div>
         </div>
