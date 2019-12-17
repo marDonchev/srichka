@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/srichka/static/css/main.02303f0f.chunk.css",
+    "main.js": "/srichka/static/js/main.363174c6.chunk.js",
+    "main.js.map": "/srichka/static/js/main.363174c6.chunk.js.map",
+    "runtime-main.js": "/srichka/static/js/runtime-main.0a87d6d5.js",
+    "runtime-main.js.map": "/srichka/static/js/runtime-main.0a87d6d5.js.map",
+    "static/js/2.f0c895f6.chunk.js": "/srichka/static/js/2.f0c895f6.chunk.js",
+    "static/js/2.f0c895f6.chunk.js.map": "/srichka/static/js/2.f0c895f6.chunk.js.map",
+    "index.html": "/srichka/index.html",
+    "precache-manifest.0b96047329c04b41dfdcb271e8f6dc6c.js": "/srichka/precache-manifest.0b96047329c04b41dfdcb271e8f6dc6c.js",
+    "service-worker.js": "/srichka/service-worker.js",
+    "static/css/main.02303f0f.chunk.css.map": "/srichka/static/css/main.02303f0f.chunk.css.map",
+    "static/js/2.f0c895f6.chunk.js.LICENSE": "/srichka/static/js/2.f0c895f6.chunk.js.LICENSE",
+    "static/media/App.scss": "/srichka/static/media/background3.a6c1ca56.jpg",
+    "static/media/background_looping.mp3": "/srichka/static/media/background_looping.b3ad5e3b.mp3",
+    "static/media/logo.svg": "/srichka/static/media/logo.2fa68b3e.svg",
+    "static/media/menu.mp3": "/srichka/static/media/menu.f39fae57.mp3",
+    "static/media/next_level.mp3": "/srichka/static/media/next_level.c3a5ce0d.mp3",
+    "static/media/right_answer.mp3": "/srichka/static/media/right_answer.cd582cf5.mp3",
+    "static/media/wrong_answer.mp3": "/srichka/static/media/wrong_answer.2f7d4301.mp3"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0a87d6d5.js",
+    "static/js/2.f0c895f6.chunk.js",
+    "static/css/main.02303f0f.chunk.css",
+    "static/js/main.363174c6.chunk.js"
+  ]
+}
