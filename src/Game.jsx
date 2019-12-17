@@ -45,7 +45,7 @@ class Game extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            score: 10,
+            score: 0,
             srichka: "ГЖМЪЦ",
             currentLevel: 1,
             levels: {
@@ -57,20 +57,33 @@ class Game extends Component {
                         consonants: 1,
                         uniqueVowels: true,
                         uniqueConsonants: false
-                    }
+                    },
+                    maxscore: 100
                 },
                 2: {
-                    increase: 50,
+                    increase: 20,
                     decrease: 10,
                     model: {
                         vowels: 1, // no more then 6
                         consonants: 2,
                         uniqueVowels: false,
                         uniqueConsonants: true
+                    },
+                    maxscore: 500
+                },
+                3: {
+                    increase: 50,
+                    decrease: 10,
+                    model: {
+                        vowels: 2, // no more then 6
+                        consonants: 3,
+                        uniqueVowels: true,
+                        uniqueConsonants: true
                     }
                 }
             },
-            hideIntro: false
+            hideIntro: false,
+            anim_Srichka: false
         };
     }
 
@@ -89,16 +102,26 @@ class Game extends Component {
         console.log("reset");
         this.setState({ currentLevel: 1, score: 0, hideIntro: false });
 
-        this.calculateSrichka();
+        // force state update
+        //this.setState({});
+
+        //this.calculateSrichka();
 
         // sound
         this.menu_sound.play();
     };
 
     calculateSrichka = () => {
-        console.log("calculateSrichka");
-        const model = this.state.levels[this.state.currentLevel].model;
+        console.info(
+            "calculateSrichka this.state.currentLevel",
+            this.state.currentLevel
+        );
+        const levels = this.state.levels;
+        const currentLevel = this.state.currentLevel;
+        const model = levels[currentLevel].model;
         console.info("calculateSrichka model", model);
+
+        this.setAnimationForTime("game_Srichka", "game_anim_Flyin", 1000);
 
         // Patch model if it exceeds the limits
         model.vowels =
@@ -168,8 +191,19 @@ class Game extends Component {
 
     answerCorrect = () => {
         console.log("answerCorrect");
+
+        this.setAnimationForTime("game_Right", "game_anim_Press", 1000);
+
         const inc = this.state.levels[this.state.currentLevel].increase;
-        this.setState({ score: this.state.score + inc });
+
+        const new_score = this.state.score + inc;
+        if (new_score >= this.state.levels[this.state.currentLevel].maxscore) {
+            this.nextLevel();
+            this.setState({ score: new_score });
+            return true;
+        }
+
+        this.setState({ score: new_score });
         this.calculateSrichka();
 
         // sound
@@ -178,17 +212,41 @@ class Game extends Component {
 
     answerWrong = () => {
         console.log("answerWrong");
+
+        this.setAnimationForTime("game_Wrong", "game_anim_Press", 1000);
+
         const dec = this.state.levels[this.state.currentLevel].decrease;
-        this.setState({ score: this.state.score - dec });
+        let new_score = this.state.score - dec;
+        new_score = new_score < 0 ? 0 : new_score;
+        this.setState({ score: new_score });
         this.calculateSrichka();
 
         // sound
         this.button_wrong_sound.play();
     };
 
+    setAnimationForTime = (elementClass, animName, animTime) => {
+        document
+            .getElementsByClassName(elementClass)[0]
+            .classList.add(animName);
+        setTimeout(function() {
+            document
+                .getElementsByClassName(elementClass)[0]
+                .classList.remove(animName);
+        }, animTime);
+    };
+
     nextLevel = () => {
         console.log("nextLevel");
         this.setState({ currentLevel: this.state.currentLevel + 1 });
+
+        setTimeout(
+            function(that) {
+                that.calculateSrichka();
+            },
+            50,
+            this
+        );
 
         // sound
         this.nextlevel_sound.play();
@@ -199,24 +257,46 @@ class Game extends Component {
         const gameClass = `game_Holder game_Level${this.state.currentLevel}`;
         return (
             <div className={gameClass}>
-                <Header
-                    score={this.state.score}
-                    handleReset={this.reset}
-                    level={this.state.currentLevel}
-                />
-                <div className="game_Srichka">{this.state.srichka}</div>
-                <div className="game_ButtonsHolder">
-                    <button className="game_Right" onClick={this.answerCorrect}>
-                        ВЯРНО
-                    </button>
-                    <button className="game_Wrong" onClick={this.answerWrong}>
-                        ГРЕШНО
-                    </button>
+                <div className="game_Wallpaper">
+                    <div />
+                    <div />
+                    <div />
+                </div>
+                <div className="game_Container">
+                    <Header
+                        score={this.state.score}
+                        handleReset={this.reset}
+                        level={this.state.currentLevel}
+                    />
+                    <div
+                        className={
+                            this.anim_Srichka
+                                ? "game_Srichka game_anim_Bounce"
+                                : "game_Srichka"
+                        }
+                    >
+                        <span>{this.state.srichka}</span>
+                    </div>
+                    <div className="game_ButtonsHolder">
+                        <button
+                            className="game_Right"
+                            onClick={this.answerCorrect}
+                        >
+                            ВЯРНО
+                        </button>
+                        <button
+                            className="game_Wrong"
+                            onClick={this.answerWrong}
+                        >
+                            ГРЕШНО
+                        </button>
+                    </div>
+
+                    {/* <button className="game_Button" onClick={this.nextLevel}>
+                        NEXT LEVEL
+                    </button> */}
                 </div>
 
-                <button className="game_Button" onClick={this.nextLevel}>
-                    NEXT LEVEL
-                </button>
                 {!this.state.hideIntro ? (
                     <div className="game_Intro">
                         <h1>Сричка</h1>

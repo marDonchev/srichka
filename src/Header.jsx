@@ -8,9 +8,9 @@ const Header = props => {
             <div className="game_Control" onClick={props.handleReset}>
                 <i className="fa fa-refresh"></i>
             </div>
-            <div>
+            <div className="game_Level">
                 <img src={logo} className="game_Logo" alt="logo" />
-                <h2>{props.level}</h2>
+                <h2>Ниво: {props.level}</h2>
             </div>
             <div className="game_Score">{props.score}</div>
         </div>
