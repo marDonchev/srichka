@@ -480,9 +480,12 @@ $color_Wrong: #e33535;
 
         p {
             font-family: $fontfamily_Primary;
-            font-size: 1.2rem;
+            font-size: 1rem;
             margin: 20px;
             flex-grow: 2;
+        }
+        ul {
+            text-align: left;
         }
         button {
             border: 0;

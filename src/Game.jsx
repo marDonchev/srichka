@@ -105,7 +105,13 @@ class Game extends Component {
         // force state update
         //this.setState({});
 
-        //this.calculateSrichka();
+        setTimeout(
+            function(that) {
+                that.calculateSrichka();
+            },
+            50,
+            this
+        );
 
         // sound
         this.menu_sound.play();
