@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "372d17759b3b2deb763816bcce0e77f0",
+    "revision": "2189b67c55396e75bda698277670794f",
     "url": "/srichka/index.html"
   },
   {
-    "revision": "ce89f10e219575509abf",
-    "url": "/srichka/static/css/main.02303f0f.chunk.css"
+    "revision": "2b6b78d16a87f571e051",
+    "url": "/srichka/static/css/main.46ffbe2c.chunk.css"
   },
   {
     "revision": "5371288842ade5467cc3",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/srichka/static/js/2.f0c895f6.chunk.js.LICENSE"
   },
   {
-    "revision": "ce89f10e219575509abf",
+    "revision": "2b6b78d16a87f571e051",
     "url": "/srichka/static/js/main.363174c6.chunk.js"
   },
   {
