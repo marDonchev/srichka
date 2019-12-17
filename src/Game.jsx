@@ -76,7 +76,7 @@ class Game extends Component {
                     decrease: 10,
                     model: {
                         vowels: 2, // no more then 6
-                        consonants: 3,
+                        consonants: 2,
                         uniqueVowels: true,
                         uniqueConsonants: true
                     }
