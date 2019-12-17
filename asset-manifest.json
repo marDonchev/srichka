@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/srichka/static/css/main.46ffbe2c.chunk.css",
-    "main.js": "/srichka/static/js/main.09b7497e.chunk.js",
-    "main.js.map": "/srichka/static/js/main.09b7497e.chunk.js.map",
+    "main.js": "/srichka/static/js/main.556598c8.chunk.js",
+    "main.js.map": "/srichka/static/js/main.556598c8.chunk.js.map",
     "runtime-main.js": "/srichka/static/js/runtime-main.0a87d6d5.js",
     "runtime-main.js.map": "/srichka/static/js/runtime-main.0a87d6d5.js.map",
     "static/js/2.f0c895f6.chunk.js": "/srichka/static/js/2.f0c895f6.chunk.js",
     "static/js/2.f0c895f6.chunk.js.map": "/srichka/static/js/2.f0c895f6.chunk.js.map",
     "index.html": "/srichka/index.html",
-    "precache-manifest.d3275d078f3185304208a19e492030ba.js": "/srichka/precache-manifest.d3275d078f3185304208a19e492030ba.js",
+    "precache-manifest.1ae625df86814ed0b6e24a78185358fe.js": "/srichka/precache-manifest.1ae625df86814ed0b6e24a78185358fe.js",
     "service-worker.js": "/srichka/service-worker.js",
     "static/css/main.46ffbe2c.chunk.css.map": "/srichka/static/css/main.46ffbe2c.chunk.css.map",
     "static/js/2.f0c895f6.chunk.js.LICENSE": "/srichka/static/js/2.f0c895f6.chunk.js.LICENSE",
@@ -24,6 +24,6 @@
     "static/js/runtime-main.0a87d6d5.js",
     "static/js/2.f0c895f6.chunk.js",
     "static/css/main.46ffbe2c.chunk.css",
-    "static/js/main.09b7497e.chunk.js"
+    "static/js/main.556598c8.chunk.js"
   ]
 }
