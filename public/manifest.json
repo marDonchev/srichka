@@ -1,6 +1,6 @@
 {
     "short_name": "Сричка",
-    "name": "Сричка - забавка игра със срички",
+    "name": "Сричка - забавна игра със срички",
     "icons": [
         {
             "src": "favicon-32x32.png",
@@ -25,6 +25,6 @@
     ],
     "start_url": "./?utm_source=homescreen",
     "display": "standalone",
-    "theme_color": "#000000",
-    "background_color": "#ffffff"
+    "theme_color": "#209CEE",
+    "background_color": "#209CEE"
 }

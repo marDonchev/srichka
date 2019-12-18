@@ -51,37 +51,37 @@ class Game extends Component {
             currentLevel: 1,
             levels: {
                 1: {
-                    increase: 10,
-                    decrease: 5,
+                    increase: 2,
+                    decrease: 1,
                     model: {
                         vowels: 1, // no more then 6
                         consonants: 1,
                         uniqueVowels: true,
                         uniqueConsonants: false
                     },
-                    maxscore: 40 //100
+                    maxscore: 50 //100
                 },
                 2: {
-                    increase: 20,
-                    decrease: 10,
+                    increase: 5,
+                    decrease: 2,
                     model: {
                         vowels: 1, // no more then 6
                         consonants: 2,
                         uniqueVowels: false,
                         uniqueConsonants: true
                     },
-                    maxscore: 100 //200
+                    maxscore: 80 //200
                 },
                 3: {
-                    increase: 50,
-                    decrease: 10,
+                    increase: 10,
+                    decrease: 5,
                     model: {
                         vowels: 2, // no more then 6
                         consonants: 2,
                         uniqueVowels: true,
                         uniqueConsonants: true
                     },
-                    maxscore: 200
+                    maxscore: 150
                 },
                 4: {
                     increase: 20,
@@ -91,8 +91,8 @@ class Game extends Component {
                     maxscore: 300
                 },
                 5: {
-                    increase: 20,
-                    decrease: 10,
+                    increase: 30,
+                    decrease: 20,
                     usewords: true,
                     wordslength: 5
                     //maxscore: 400
