@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/srichka/static/css/main.46ffbe2c.chunk.css",
-    "main.js": "/srichka/static/js/main.556598c8.chunk.js",
-    "main.js.map": "/srichka/static/js/main.556598c8.chunk.js.map",
+    "main.css": "/srichka/static/css/main.17f1b2f8.chunk.css",
+    "main.js": "/srichka/static/js/main.e2be3b7b.chunk.js",
+    "main.js.map": "/srichka/static/js/main.e2be3b7b.chunk.js.map",
     "runtime-main.js": "/srichka/static/js/runtime-main.0a87d6d5.js",
     "runtime-main.js.map": "/srichka/static/js/runtime-main.0a87d6d5.js.map",
-    "static/js/2.f0c895f6.chunk.js": "/srichka/static/js/2.f0c895f6.chunk.js",
-    "static/js/2.f0c895f6.chunk.js.map": "/srichka/static/js/2.f0c895f6.chunk.js.map",
+    "static/js/2.60c21060.chunk.js": "/srichka/static/js/2.60c21060.chunk.js",
+    "static/js/2.60c21060.chunk.js.map": "/srichka/static/js/2.60c21060.chunk.js.map",
     "index.html": "/srichka/index.html",
-    "precache-manifest.1ae625df86814ed0b6e24a78185358fe.js": "/srichka/precache-manifest.1ae625df86814ed0b6e24a78185358fe.js",
+    "precache-manifest.ea0919a7d18836cb69605869a2fb543d.js": "/srichka/precache-manifest.ea0919a7d18836cb69605869a2fb543d.js",
     "service-worker.js": "/srichka/service-worker.js",
-    "static/css/main.46ffbe2c.chunk.css.map": "/srichka/static/css/main.46ffbe2c.chunk.css.map",
-    "static/js/2.f0c895f6.chunk.js.LICENSE": "/srichka/static/js/2.f0c895f6.chunk.js.LICENSE",
-    "static/media/App.scss": "/srichka/static/media/background3.a6c1ca56.jpg",
+    "static/css/main.17f1b2f8.chunk.css.map": "/srichka/static/css/main.17f1b2f8.chunk.css.map",
+    "static/js/2.60c21060.chunk.js.LICENSE": "/srichka/static/js/2.60c21060.chunk.js.LICENSE",
+    "static/media/App.scss": "/srichka/static/media/background5.85e700b2.jpg",
     "static/media/background_looping.mp3": "/srichka/static/media/background_looping.b3ad5e3b.mp3",
     "static/media/logo.svg": "/srichka/static/media/logo.2fa68b3e.svg",
     "static/media/menu.mp3": "/srichka/static/media/menu.f39fae57.mp3",
@@ -22,8 +22,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.0a87d6d5.js",
-    "static/js/2.f0c895f6.chunk.js",
-    "static/css/main.46ffbe2c.chunk.css",
-    "static/js/main.556598c8.chunk.js"
+    "static/js/2.60c21060.chunk.js",
+    "static/css/main.17f1b2f8.chunk.css",
+    "static/js/main.e2be3b7b.chunk.js"
   ]
 }
