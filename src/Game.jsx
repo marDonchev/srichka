@@ -5,6 +5,7 @@ import button_right_sound from "./right_answer.mp3";
 import button_wrong_sound from "./wrong_answer.mp3";
 import nextlevel_sound from "./next_level.mp3";
 import menu_sound from "./menu.mp3";
+import words from "./words";
 
 const shuffleArray = array => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -58,7 +59,7 @@ class Game extends Component {
                         uniqueVowels: true,
                         uniqueConsonants: false
                     },
-                    maxscore: 100
+                    maxscore: 40 //100
                 },
                 2: {
                     increase: 20,
@@ -69,7 +70,7 @@ class Game extends Component {
                         uniqueVowels: false,
                         uniqueConsonants: true
                     },
-                    maxscore: 500
+                    maxscore: 100 //200
                 },
                 3: {
                     increase: 50,
@@ -79,11 +80,27 @@ class Game extends Component {
                         consonants: 2,
                         uniqueVowels: true,
                         uniqueConsonants: true
-                    }
+                    },
+                    maxscore: 200
+                },
+                4: {
+                    increase: 20,
+                    decrease: 10,
+                    usewords: true,
+                    wordslength: 4,
+                    maxscore: 300
+                },
+                5: {
+                    increase: 20,
+                    decrease: 10,
+                    usewords: true,
+                    wordslength: 5
+                    //maxscore: 400
                 }
             },
             hideIntro: false,
-            anim_Srichka: false
+            anim_Srichka: false,
+            usedWords: []
         };
     }
 
@@ -92,6 +109,8 @@ class Game extends Component {
         this.background_music = document.getElementsByClassName(
             "audio-element"
         )[0];
+
+        console.info("words", words);
     };
 
     clickOnIntro = e => {
@@ -124,75 +143,124 @@ class Game extends Component {
         );
         const levels = this.state.levels;
         const currentLevel = this.state.currentLevel;
-        const model = levels[currentLevel].model;
+        const model = levels[currentLevel].model
+            ? levels[currentLevel].model
+            : null;
         console.info("calculateSrichka model", model);
+        let srichka = "";
 
         this.setAnimationForTime("game_Srichka", "game_anim_Flyin", 1000);
 
-        // Patch model if it exceeds the limits
-        model.vowels =
-            model.vowels <= azbuka.vowels.length
-                ? model.vowels
-                : azbuka.vowels.length;
-        model.consonants =
-            model.consonants <= azbuka.consonants.length
-                ? model.consonants
-                : azbuka.consonants.length;
+        if (model) {
+            // Patch model if it exceeds the limits
+            model.vowels =
+                model.vowels <= azbuka.vowels.length
+                    ? model.vowels
+                    : azbuka.vowels.length;
+            model.consonants =
+                model.consonants <= azbuka.consonants.length
+                    ? model.consonants
+                    : azbuka.consonants.length;
 
-        // vowels
-        let vowels = [];
-        while (vowels.length < model.vowels) {
-            var vowel =
-                azbuka.vowels[Math.floor(Math.random() * azbuka.vowels.length)];
-            if (model.uniqueVowels) {
+            // vowels
+            let vowels = [];
+            while (vowels.length < model.vowels) {
+                var vowel =
+                    azbuka.vowels[
+                        Math.floor(Math.random() * azbuka.vowels.length)
+                    ];
+                if (model.uniqueVowels) {
+                    do {
+                        vowel =
+                            azbuka.vowels[
+                                Math.floor(Math.random() * azbuka.vowels.length)
+                            ];
+                    } while (vowels.indexOf(vowel) !== -1);
+                    // add it to the list
+                    vowels.push(vowel);
+                } else {
+                    // add it to the list
+                    vowels.push(vowel);
+                }
+            }
+            console.info("calculateSrichka vowels", vowels);
+
+            // consonants
+            let consonants = [];
+            while (consonants.length < model.consonants) {
+                var consonant =
+                    azbuka.consonants[
+                        Math.floor(Math.random() * azbuka.consonants.length)
+                    ];
+                if (model.uniqueConsonants) {
+                    do {
+                        consonant =
+                            azbuka.consonants[
+                                Math.floor(
+                                    Math.random() * azbuka.consonants.length
+                                )
+                            ];
+                    } while (consonants.indexOf(consonant) !== -1);
+                    // add it to the list
+                    consonants.push(consonant);
+                } else {
+                    // add it to the list
+                    consonants.push(consonant);
+                }
+            }
+
+            console.info("calculateSrichka consonants", consonants);
+
+            let allLetters = [...vowels, ...consonants];
+            console.info("calculateSrichka allLetters", allLetters);
+            shuffleArray(allLetters);
+            console.info(
+                "calculateSrichka allLetters (affter Shuffle)",
+                allLetters
+            );
+            srichka = allLetters.join("");
+        }
+
+        if (
+            levels[currentLevel].usewords &&
+            levels[currentLevel].usewords === true
+        ) {
+            // using words
+            const wordslength = levels[currentLevel].wordslength;
+            let matchedWords = words.filter(w => {
+                if (w.length === Number(wordslength)) return w;
+            });
+            matchedWords = matchedWords.filter(function(item, pos) {
+                return matchedWords.indexOf(item) === pos;
+            });
+            console.info("matchedWords", matchedWords);
+
+            const usedWords = this.state.usedWords;
+            console.log(
+                "matchedWords.length=" +
+                    matchedWords.length +
+                    " > usedWords.length=" +
+                    usedWords.length
+            );
+            if (matchedWords.length > usedWords.length) {
                 do {
-                    vowel =
-                        azbuka.vowels[
-                            Math.floor(Math.random() * azbuka.vowels.length)
+                    srichka =
+                        matchedWords[
+                            Math.floor(Math.random() * matchedWords.length)
                         ];
-                } while (vowels.indexOf(vowel) !== -1);
-                // add it to the list
-                vowels.push(vowel);
+                } while (usedWords.indexOf(srichka) !== -1);
+
+                this.setState({ usedWords: [...usedWords, srichka] });
             } else {
-                // add it to the list
-                vowels.push(vowel);
+                srichka =
+                    matchedWords[
+                        Math.floor(Math.random() * matchedWords.length)
+                    ];
+                this.setState({ usedWords: [srichka] });
             }
         }
-        console.info("calculateSrichka vowels", vowels);
 
-        // consonants
-        let consonants = [];
-        while (consonants.length < model.consonants) {
-            var consonant =
-                azbuka.consonants[
-                    Math.floor(Math.random() * azbuka.consonants.length)
-                ];
-            if (model.uniqueConsonants) {
-                do {
-                    consonant =
-                        azbuka.consonants[
-                            Math.floor(Math.random() * azbuka.consonants.length)
-                        ];
-                } while (consonants.indexOf(consonant) !== -1);
-                // add it to the list
-                consonants.push(consonant);
-            } else {
-                // add it to the list
-                consonants.push(consonant);
-            }
-        }
-
-        console.info("calculateSrichka consonants", consonants);
-
-        let allLetters = [...vowels, ...consonants];
-        console.info("calculateSrichka allLetters", allLetters);
-        shuffleArray(allLetters);
-        console.info(
-            "calculateSrichka allLetters (affter Shuffle)",
-            allLetters
-        );
-
-        this.setState({ srichka: allLetters.join("") });
+        this.setState({ srichka });
     };
 
     answerCorrect = () => {
@@ -267,6 +335,8 @@ class Game extends Component {
                     <div />
                     <div />
                     <div />
+                    <div />
+                    <div />
                 </div>
                 <div className="game_Container">
                     <Header
@@ -310,24 +380,28 @@ class Game extends Component {
                             "Сричка" е игра/генератор на срички за улеснение на
                             първолаците в изговарянето им. <br />
                             Правилата са много лесни:
-                            <ul>
-                                <li>
-                                    Имаме (за сега) 3 нива на сложност - започва
-                                    се с двубуквени срички като всяко следващо
-                                    ниво е по-сложно
-                                </li>
-                                <li>
-                                    След изговарянето на сричката родителя
-                                    натиска бутона "ВЯРНО" или "ГРЕШНО", с което
-                                    се увеличават точките или съответно
-                                    намаляват.
-                                </li>
-                                <li>
-                                    При достигането на точките за следващо ниво,
-                                    то играча преминава в него.
-                                </li>
-                            </ul>
-                            Желаем приятни моменти със "Сричка" 😜
+                        </p>
+                        <ul>
+                            <li>
+                                Имаме (за сега) 3 нива на сложност - започва се
+                                с двубуквени срички като всяко следващо ниво е
+                                по-сложно
+                            </li>
+                            <li>
+                                След изговарянето на сричката родителя натиска
+                                бутона "ВЯРНО" или "ГРЕШНО", с което се
+                                увеличават точките или съответно намаляват.
+                            </li>
+                            <li>
+                                При достигането на точките за следващо ниво, то
+                                играча преминава в него.
+                            </li>
+                        </ul>
+                        <p>
+                            Желаем приятни моменти със "Сричка"{" "}
+                            <span role="img" aria-label="smile">
+                                😜
+                            </span>
                         </p>
                         <button onClick={this.clickOnIntro}>СТАРТ</button>
                     </div>

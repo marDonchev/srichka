@@ -214,6 +214,12 @@ $color_Wrong: #e33535;
         & > div:nth-child(3) {
             background-image: url("./background3.jpg");
         }
+        & > div:nth-child(4) {
+            background-image: url("./background4.jpg");
+        }
+        & > div:nth-child(5) {
+            background-image: url("./background5.jpg");
+        }
     }
     &.game_Level1 .game_Wallpaper {
         > div:nth-child(1) {
@@ -226,6 +232,16 @@ $color_Wrong: #e33535;
             transform: scale(1.5) rotate(30deg);
         }
         > div:nth-child(3) {
+            opacity: 0;
+            // left: 50vw;
+            transform: scale(1.5) rotate(30deg);
+        }
+        > div:nth-child(4) {
+            opacity: 0;
+            // left: 50vw;
+            transform: scale(1.5) rotate(30deg);
+        }
+        > div:nth-child(5) {
             opacity: 0;
             // left: 50vw;
             transform: scale(1.5) rotate(30deg);
@@ -247,6 +263,16 @@ $color_Wrong: #e33535;
             // left: 50vw;
             transform: scale(1.5) rotate(30deg);
         }
+        > div:nth-child(4) {
+            opacity: 0;
+            // left: 50vw;
+            transform: scale(1.5) rotate(30deg);
+        }
+        > div:nth-child(5) {
+            opacity: 0;
+            // left: 50vw;
+            transform: scale(1.5) rotate(30deg);
+        }
     }
     &.game_Level3 .game_Wallpaper {
         > div:nth-child(1) {
@@ -260,6 +286,70 @@ $color_Wrong: #e33535;
             transform: scale(0.5) rotate(-30deg);
         }
         > div:nth-child(3) {
+            opacity: 1;
+            // left: 0vw;
+            transform: scale(1) rotate(0deg);
+        }
+        > div:nth-child(4) {
+            opacity: 0;
+            // left: 0vw;
+            transform: scale(1.5) rotate(30deg);
+        }
+        > div:nth-child(5) {
+            opacity: 0;
+            // left: 0vw;
+            transform: scale(1.5) rotate(30deg);
+        }
+    }
+    &.game_Level4 .game_Wallpaper {
+        > div:nth-child(1) {
+            opacity: 0;
+            // left: -50vw;
+            transform: scale(0.5) rotate(-30deg);
+        }
+        > div:nth-child(2) {
+            opacity: 0;
+            // left: -50vw;
+            transform: scale(0.5) rotate(-30deg);
+        }
+        > div:nth-child(3) {
+            opacity: 0;
+            // left: 0vw;
+            transform: scale(0.5) rotate(-30deg);
+        }
+        > div:nth-child(4) {
+            opacity: 1;
+            // left: 0vw;
+            transform: scale(1) rotate(0deg);
+        }
+        > div:nth-child(5) {
+            opacity: 0;
+            // left: 0vw;
+            transform: scale(1.5) rotate(30deg);
+        }
+    }
+    &.game_Level5 .game_Wallpaper {
+        > div:nth-child(1) {
+            opacity: 0;
+            // left: -50vw;
+            transform: scale(0.5) rotate(-30deg);
+        }
+        > div:nth-child(2) {
+            opacity: 0;
+            // left: -50vw;
+            transform: scale(0.5) rotate(-30deg);
+        }
+        > div:nth-child(3) {
+            opacity: 0;
+            // left: 0vw;
+            transform: scale(0.5) rotate(-30deg);
+        }
+        > div:nth-child(4) {
+            opacity: 0;
+            // left: 0vw;
+            transform: scale(0.5) rotate(-30deg);
+        }
+        > div:nth-child(5) {
             opacity: 1;
             // left: 0vw;
             transform: scale(1) rotate(0deg);
@@ -365,7 +455,7 @@ $color_Wrong: #e33535;
         .game_Srichka {
             font-family: $fontfamily_Primary;
             font-size: 7rem;
-            font-weight: 700;
+            font-weight: 100;
             background: rgba(255, 255, 255, 0.8);
             margin: 40px 20px;
             border-radius: 30px;
@@ -486,6 +576,10 @@ $color_Wrong: #e33535;
         }
         ul {
             text-align: left;
+            font-family: $fontfamily_Primary;
+            font-size: 1rem;
+            margin: 20px;
+            flex-grow: 2;
         }
         button {
             border: 0;
